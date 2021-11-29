@@ -26,38 +26,53 @@ function getRandomItem(arr) {
     return arr[index];
 }
 
-function handleGuess(userGuess, correctSpot) {
-    // should reset the styles
-
-    // then increment the guesses
-
-    // then grab the appropriate container element for the correct guess from the DOM
-
-    // then add the face class to that element so that the face shows up
-
-    // then if the user guess is correct, increment the correct guesses
-
-    // update the DOM to show this change to the user (including the losses, not tracked directly in state)
-}
-
-function resetStyles() {
-    // should remove the face class from all containers
-}
-
 shedButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
-
+    let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess(shedContainer.id, correctSpot);
 });
 
 treeButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
-
+    let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess(treeContainer.id, correctSpot);
 });
 
 boulderButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
-
+    let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
+    handleGuess(boulderContainer.id, correctSpot);
 });
+
+function handleGuess(userGuess, correctSpot) {
+    // should reset the styles
+    resetStyles();
+    // then increment the total guesses
+    totalGuesses++;
+
+    // then grab the appropriate container element for the correct guess from the DOM
+    const correctSpotEl = document.getElementById(`${correctSpot}-container`);
+    // then add the face class to that element so that the face shows up
+    correctSpotEl.classList.add('face');
+    // then if the user guess is correct, increment the correct guesses
+    console.log(`Hiding place: ${correctSpotEl.id}`)
+    console.log(`User guessed: ${userGuess}`);
+    if (userGuess === correctSpotEl.id) {
+        correctGuesses++;
+    }
+
+    // update the DOM to show this change to the user (including the losses, not tracked directly in state)
+    totalEl.textContent = totalGuesses;
+    winsEl.textContent = correctGuesses;
+    document.getElementById('losses').textContent = (totalGuesses - correctGuesses);
+}
+
+function resetStyles() {
+    // should remove the face class from all containers
+    shedContainer.classList.remove('face');
+    treeContainer.classList.remove('face');
+    boulderContainer.classList.remove('face');
+}
