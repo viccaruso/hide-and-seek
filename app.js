@@ -30,21 +30,21 @@ shedButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
     let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
-    handleGuess(shedContainer.id, correctSpot);
+    handleGuess('shed-container', correctSpot);
 });
 
 treeButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
     let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
-    handleGuess(treeContainer.id, correctSpot);
+    handleGuess('tree-container', correctSpot);
 });
 
 boulderButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
     let correctSpot = getRandomItem(hidingPlaces);
     // then use that correct spot to 'handle the guess' using the handleGuess function
-    handleGuess(boulderContainer.id, correctSpot);
+    handleGuess('boulder-container', correctSpot);
 });
 
 function handleGuess(userGuess, correctSpot) {
