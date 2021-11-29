@@ -28,7 +28,7 @@ function getRandomItem(arr) {
 
 shedButton.addEventListener('click', () => {
     // should get a random item to call the 'correct spot'
-    let correctSpot = getRandomItem(hidingPlaces);
+    let correctSpot = `${getRandomItem(hidingPlaces)}-container`;
     // then use that correct spot to 'handle the guess' using the handleGuess function
     handleGuess('shed-container', correctSpot);
 });
@@ -54,7 +54,7 @@ function handleGuess(userGuess, correctSpot) {
     totalGuesses++;
 
     // then grab the appropriate container element for the correct guess from the DOM
-    const correctSpotEl = document.getElementById(`${correctSpot}-container`);
+    const correctSpotEl = document.getElementById(correctSpot);
     // then add the face class to that element so that the face shows up
     correctSpotEl.classList.add('face');
     // then if the user guess is correct, increment the correct guesses
